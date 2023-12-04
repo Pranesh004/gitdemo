@@ -1,2 +1,2 @@
 # gitdemo
-created for demo sessions of git
+created CRUD application using spring boot
