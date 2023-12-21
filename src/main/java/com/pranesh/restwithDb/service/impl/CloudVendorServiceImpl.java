@@ -1,5 +1,6 @@
 package com.pranesh.restwithDb.service.impl;
 
+import com.pranesh.restwithDb.exception.CloudVendorNotFoundException;
 import com.pranesh.restwithDb.model.CloudVendor;
 import com.pranesh.restwithDb.repository.CloudVendorRepository;
 import com.pranesh.restwithDb.service.CloudVendorService;
@@ -40,6 +41,10 @@ public class CloudVendorServiceImpl implements CloudVendorService {
     @Override
     public CloudVendor getCloudVendor(String cloudVendorId) {
 //more business logic
+        if(cloudVendorRepository.findById(cloudVendorId).isEmpty())
+        {
+            throw new CloudVendorNotFoundException("Cloud vendor does not exist");
+        }
         return cloudVendorRepository.findById(cloudVendorId).get();
     }
 
